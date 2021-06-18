@@ -15,15 +15,8 @@ func LoginAction(ctx *gin.Context) {
 	fmt.Println(err)
 	fmt.Println(user)
 	if err != nil {
-		ctx.JSON(200, gin.H{
-			"status": 1,
-			"msg":    "success!",
-			"data":   user,
-		})
+		response.JsonResultOk(true, user, ctx)
 	} else {
-		ctx.JSON(200, gin.H{
-			"status": 0,
-			"msg":    "error!",
-		})
+		response.JsonResultErr(false, nil, ctx)
 	}
 }
