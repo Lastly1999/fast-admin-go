@@ -1,0 +1,11 @@
+# 项目端口
+project:
+    port: "8080"
+# 数据库配置
+mysql:
+    username: "root"
+    password: "1234"
+    host: "159.75.22.114"
+    port: "3306"
+    database: "system_manage"
+    charset: "utf8mb4"

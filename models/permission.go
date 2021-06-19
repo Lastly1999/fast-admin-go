@@ -1,4 +1,4 @@
-package Models
+package models
 
 type Permission struct {
 	ID           uint `json:"id" gorm:"column:id"`

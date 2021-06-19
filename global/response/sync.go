@@ -1,4 +1,4 @@
-package Response
+package response
 
 import "github.com/gin-gonic/gin"
 
@@ -11,6 +11,11 @@ func RequestParamSync(ctx *gin.Context) map[string]interface{} {
 	param := make(map[string]interface{})
 	err := ctx.BindJSON(&param)
 	if err != nil {
+		ctx.JSON(200, gin.H{
+			"status": false,
+			"code":   ERROR,
+			"msg":    "获取JSON参数失败，Func -> RequestParamSync",
+		})
 		return nil
 	}
 	return param
