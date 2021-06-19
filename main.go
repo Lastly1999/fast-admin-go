@@ -1,9 +1,9 @@
 package main
 
 import (
-	"go-service/router"
+	"go-service/Router"
 )
 
 func main() {
-	router.AppRouter()
+	Router.AppRouter()
 }

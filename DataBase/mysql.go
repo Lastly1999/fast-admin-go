@@ -1,8 +1,8 @@
-package database
+package DataBase
 
 import (
 	"fmt"
-	"go-service/global"
+	"go-service/Global"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -10,18 +10,18 @@ import (
 )
 
 func InitDataBase() {
-	dsn := "root:1234@tcp(159.75.22.114:3306)/system_manage?charset=utf8mb4"
+	dsn := "root:Chen1027@tcp(sh-cynosdbmysql-grp-gtd0epo6.sql.tencentcdb.com:28856)/system_manage?charset=utf8mb4"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{
-			TablePrefix:   "Admin_",
+			TablePrefix:   "admin_",
 			SingularTable: true,
 		},
 		Logger: logger.Default.LogMode(logger.Silent),
 	})
 	if err != nil {
-		fmt.Println("database content error...")
+		fmt.Println("DataBase content error...")
 	} else {
-		fmt.Println("database content success...")
+		fmt.Println("DataBase content success...")
 	}
-	global.Db = db
+	Global.Db = db
 }

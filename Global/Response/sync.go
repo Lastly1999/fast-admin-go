@@ -1,4 +1,4 @@
-package response
+package Response
 
 import "github.com/gin-gonic/gin"
 
@@ -18,16 +18,17 @@ func RequestParamSync(ctx *gin.Context) map[string]interface{} {
 
 func JsonResultOk(status bool, data interface{}, ctx *gin.Context) {
 	ctx.JSON(SUCCESS, gin.H{
+		"code":   SUCCESS,
 		"status": status,
+		"msg":    "success",
 		"data":   data,
-		"msg":    "error",
 	})
 }
 
-func JsonResultErr(status bool, data interface{}, ctx *gin.Context) {
+func JsonResultErr(status bool, ctx *gin.Context) {
 	ctx.JSON(ERROR, gin.H{
+		"code":   ERROR,
 		"status": status,
-		"data":   data,
 		"msg":    "error",
 	})
 }

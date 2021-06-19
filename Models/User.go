@@ -1,10 +1,13 @@
 package Models
 
-// User 用户表 gorm:"column:xxx" 为数据库字段映射
+import "time"
+
+// User 用户表
 type User struct {
-	ID         uint   `json:"id,omitempty"`
-	UserName   string `json:"userName" gorm:"column:userName"`
-	UserPass   string `json:"userPass" gorm:"column:userPass"`
-	UserAvatar string `json:"userAvatar" gorm:"column:userAvatar"`
-	UserSign   string `json:"userSign" gorm:"column:userSign"`
+	ID         uint      `json:"id,omitempty"`
+	UserName   string    `json:"userName" gorm:"column:userName"`
+	UserPass   string    `json:"userPass" gorm:"column:userPass"`
+	UserAvatar string    `json:"userAvatar" gorm:"column:userAvatar"`
+	UserSign   string    `json:"userSign" gorm:"column:userSign"`
+	CreateDate time.Time `json:"createDate" gorm:"column:createdDate"`
 }
