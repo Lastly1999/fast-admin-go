@@ -10,7 +10,7 @@ import (
 // GinConf 配置文件结构体
 type GinConf struct {
 	Project struct {
-		Port int `json:"port"`
+		Port string `json:"port"`
 	} `json:"project"`
 	Mysql struct {
 		Username string `json:"username"`
@@ -22,13 +22,13 @@ type GinConf struct {
 	} `json:"mysql"`
 }
 
-func ReadYamlConfgi() GinConf {
+func ReadYamlConfig() GinConf {
 	var ginConf GinConf
 	// 	读取项目所在系统路径
 	rootPath, _ := os.Getwd()
 	fmt.Println(rootPath)
 	//	读取yaml文件到缓存中
-	config, err := ioutil.ReadFile(rootPath + "\\config\\config.yaml")
+	config, err := ioutil.ReadFile(rootPath + "\\config.yaml")
 	if err != nil {
 		fmt.Print(err)
 	}

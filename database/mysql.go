@@ -12,7 +12,7 @@ import (
 
 func InitDataBase() {
 	//	读取yaml数据库配置信息
-	dbConfig := utils.ReadYamlConfgi()
+	dbConfig := utils.ReadYamlConfig()
 	username := dbConfig.Mysql.Username
 	password := dbConfig.Mysql.Password
 	host := dbConfig.Mysql.Host

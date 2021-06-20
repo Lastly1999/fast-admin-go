@@ -1,9 +1,9 @@
 package main
 
 import (
-	"go-service/router"
+	"go-service/core"
 )
 
 func main() {
-	router.AppRouter()
+	core.RunningGinServe()
 }

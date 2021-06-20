@@ -1,6 +1,9 @@
 package response
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
 
 const (
 	SUCCESS = 200
@@ -22,7 +25,7 @@ func RequestParamSync(ctx *gin.Context) map[string]interface{} {
 }
 
 func JsonResultOk(status bool, data interface{}, ctx *gin.Context) {
-	ctx.JSON(SUCCESS, gin.H{
+	ctx.JSON(http.StatusOK, gin.H{
 		"code":   SUCCESS,
 		"status": status,
 		"msg":    "success",

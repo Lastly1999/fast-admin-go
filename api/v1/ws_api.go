@@ -21,6 +21,7 @@ func WsPing(c *gin.Context) {
 	}
 	defer ws.Close()
 	for {
+		fmt.Println(111)
 		//读取ws中的数据
 		mt, message, err := ws.ReadMessage()
 		if err != nil {
@@ -31,7 +32,6 @@ func WsPing(c *gin.Context) {
 		}
 		//写入ws数据
 		err = ws.WriteMessage(mt, message)
-		fmt.Println("socket 心跳检测..")
 		if err != nil {
 			break
 		}
