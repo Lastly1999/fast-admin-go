@@ -8,7 +8,7 @@ import (
 )
 
 type UserInfoRes struct {
-	UserInfo models.User
+	UserInfo models.User `json:"userInfo"`
 	RoleId   int `json:"roleId"`
 }
 

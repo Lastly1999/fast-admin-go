@@ -8,7 +8,7 @@ import (
 
 // FindtUserRoleMenus 查询用户权限菜单
 func FindtUserRoleMenus(ctx *gin.Context) {
-	userId := ctx.Query("id")
+	userId := ctx.Param("id")
 	//	查询用户权限菜单
 	result := services.FindUserRoleMenus(userId)
 	if len(result) > 0 {

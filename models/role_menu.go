@@ -2,12 +2,13 @@ package models
 
 // RoleMenu 权限菜单表
 type RoleMenu struct {
-	MenuId         int    `json:"menuId" gorm:"column:menuId"`
-	MenuName       string `json:"menuName" gorm:"column:menuName"`
-	MenuIcon       string `json:"menuIcon" gorm:"column:menuIcon"`
-	MenuPath       string `json:"menuPath" gorm:"column:menuPath"`
-	MenuParentId   int    `json:"menuParentId" gorm:"column:menuParentId"`
-	MenuParentName string `json:"menuParentName" gorm:"column:menuParentName"`
+	ID             int    `json:"id" gorm:"menuId"`
+	MenuId         int    `json:"key" gorm:"column:menuId"`
+	MenuName       string `json:"name" gorm:"column:menuName"`
+	MenuIcon       string `json:"icon" gorm:"column:menuIcon"`
+	MenuPath       string `json:"path" gorm:"column:menuPath"`
+	MenuParentId   int    `json:"pid" gorm:"column:menuParentId"`
+	MenuParentName string `json:"pName" gorm:"column:menuParentName"`
 }
 
 // SyncRoleMenuList 序列化后的集合结构体

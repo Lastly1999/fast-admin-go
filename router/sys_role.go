@@ -9,6 +9,6 @@ import (
 func InitRoleRouter(Router *gin.RouterGroup) {
 	RoleRouter := Router.Group("role")
 	{
-		RoleRouter.GET("/menus", v1.FindtUserRoleMenus)
+		RoleRouter.GET("/menus/:id", v1.FindtUserRoleMenus)
 	}
 }
