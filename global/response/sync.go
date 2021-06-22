@@ -14,7 +14,7 @@ func RequestParamSync(ctx *gin.Context) map[string]interface{} {
 	param := make(map[string]interface{})
 	err := ctx.BindJSON(&param)
 	if err != nil {
-		ctx.JSON(200, gin.H{
+		ctx.JSON(http.StatusOK, gin.H{
 			"status": false,
 			"code":   ERROR,
 			"msg":    "获取JSON参数失败，Func -> RequestParamSync",
@@ -24,19 +24,39 @@ func RequestParamSync(ctx *gin.Context) map[string]interface{} {
 	return param
 }
 
-func JsonResultOk(status bool, data interface{}, ctx *gin.Context) {
+// JsonResultOk 成功统一返回格式
+func JsonResultOk(data interface{}, ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"code":   SUCCESS,
-		"status": status,
+		"status": true,
 		"msg":    "success",
 		"data":   data,
 	})
 }
 
-func JsonResultErr(status bool, ctx *gin.Context) {
-	ctx.JSON(ERROR, gin.H{
+// JsonResultErr 失败统一返回格式
+func JsonResultErr(msg string, ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, gin.H{
 		"code":   ERROR,
-		"status": status,
-		"msg":    "error",
+		"status": false,
+		"msg":    msg,
+	})
+}
+
+// JsonUploadSuccess 上传成功统一返回格式
+func JsonUploadSuccess(data interface{}, ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, gin.H{
+		"code":   http.StatusOK,
+		"status": true,
+		"data":   data,
+	})
+}
+
+// JsonUploadErr 上传错误统一返回格式
+func JsonUploadErr(data interface{}, ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, gin.H{
+		"code":   ERROR,
+		"status": true,
+		"data":   data,
 	})
 }
