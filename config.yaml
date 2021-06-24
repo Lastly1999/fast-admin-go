@@ -5,8 +5,8 @@ project:
 # 数据库配置
 mysql:
     username: "root"
-    password: "1234"
-    host: "159.75.22.114"
+    password: "Chen1027"
+    host: "rm-wz94k0l69605b622nwo.mysql.rds.aliyuncs.com"
     port: "3306"
     database: "system_manage"
     charset: "utf8mb4"
