@@ -12,8 +12,8 @@ func FindtUserRoleMenus(ctx *gin.Context) {
 	//	查询用户权限菜单
 	result := services.FindUserRoleMenus(userId)
 	if len(result) > 0 {
-		response.JsonResultOk(true, result, ctx)
+		response.JsonResultOk(result, ctx)
 		return
 	}
-	response.JsonResultErr(false, ctx)
+	response.JsonResultErr("上传失败", ctx)
 }

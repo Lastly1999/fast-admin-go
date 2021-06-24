@@ -9,7 +9,7 @@ import (
 
 type UserInfoRes struct {
 	UserInfo models.User `json:"userInfo"`
-	RoleId   int `json:"roleId"`
+	RoleId   int         `json:"roleId"`
 }
 
 // LoginAction 用户登录
@@ -23,10 +23,10 @@ func LoginAction(ctx *gin.Context) {
 	roleResult := services.FindUserRoleId(user.ID)
 	//	返回判断
 	if total == 0 {
-		response.JsonResultErr(false, ctx)
+		response.JsonResultErr("登录失败", ctx)
 		return
 	}
-	response.JsonResultOk(true, UserInfoRes{
+	response.JsonResultOk(UserInfoRes{
 		UserInfo: user,
 		RoleId:   int(roleResult.RoleId),
 	}, ctx)

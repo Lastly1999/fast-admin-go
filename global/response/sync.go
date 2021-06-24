@@ -44,10 +44,11 @@ func JsonResultErr(msg string, ctx *gin.Context) {
 }
 
 // JsonUploadSuccess 上传成功统一返回格式
-func JsonUploadSuccess(data interface{}, ctx *gin.Context) {
+func JsonUploadSuccess(data interface{}, msg string, ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"code":   http.StatusOK,
 		"status": true,
+		"msg":    msg,
 		"data":   data,
 	})
 }
