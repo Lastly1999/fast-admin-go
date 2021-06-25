@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"go-service/global/response"
 	"go-service/services"
+	"strconv"
 )
 
 // GetCarListById 获取车型列表
@@ -13,8 +14,20 @@ func GetCarListById(ctx *gin.Context) {
 	param := response.RequestParamSync(ctx)
 	//	类型id
 	typeId := param["typeId"].(string)
+	//	分页参数 页码
+	page, _ := strconv.Atoi(param["page"].(string))
+	//	分页参数 页数据量
+	pageSize, _ := strconv.Atoi(param["pageSize"].(string))
+	fmt.Println(pageSize)
 	//	servcies处理
-	result, total := services.FindCarListById(typeId)
-	fmt.Println(result)
-	fmt.Println(total)
+	err, result, pageResult := services.FindCarListById(typeId, page, pageSize)
+
+	if err != nil {
+		response.JsonResultErr("查询失败", ctx)
+	} else {
+		response.JsonResultOk(gin.H{
+			"list":     result,
+			"pageInfo": pageResult,
+		}, ctx)
+	}
 }

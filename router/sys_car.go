@@ -9,6 +9,6 @@ import (
 func InitCarRouter(Router *gin.RouterGroup) {
 	carRouter := Router.Group("/car")
 	{
-		carRouter.GET("/list/:typeId", v1.GetCarListById)
+		carRouter.POST("/list", v1.GetCarListById)
 	}
 }
