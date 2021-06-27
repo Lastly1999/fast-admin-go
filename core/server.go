@@ -1,15 +1,14 @@
 package core
 
 import (
-	"go-service/database"
 	"go-service/initialize"
 )
 
 // RunningGinServe v1服务启动方法
 func RunningGinServe() {
-	//	config := utils.ReadYamlConfig()
+	//config := utils.ReadYamlConfig()
 	//	初始化数据库连接池
-	database.InitDataBase()
+	//database.InitDataBase()
 	//	初始化路由中间件
 	router := initialize.Routers()
 	//	serve := ":" + config.Project.Port

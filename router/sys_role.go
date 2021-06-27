@@ -2,13 +2,13 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	v1 "go-service/api/v1"
+	"go-service/database"
 )
 
 // InitRoleRouter 权限路由集合
 func InitRoleRouter(Router *gin.RouterGroup) {
 	RoleRouter := Router.Group("role")
 	{
-		RoleRouter.GET("/menus/:id", v1.FindtUserRoleMenus)
+		RoleRouter.GET("/menus/:id", database.RoleHandel.GetMenusByUserIdHandel)
 	}
 }

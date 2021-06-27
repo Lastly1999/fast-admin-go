@@ -2,7 +2,7 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	v1 "go-service/api/v1"
+	v1 "go-service/handler/v1"
 )
 
 func InitFileRouter(Router *gin.RouterGroup) {

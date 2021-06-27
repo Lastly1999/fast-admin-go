@@ -1,7 +1,8 @@
 package router
+
 import (
-"github.com/gin-gonic/gin"
-v1 "go-service/api/v1"
+	"github.com/gin-gonic/gin"
+	v1 "go-service/handler/v1"
 )
 
 // InitWsRouter 用户路由集合

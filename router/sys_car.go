@@ -2,7 +2,7 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	v1 "go-service/api/v1"
+	v1 "go-service/handler/v1"
 )
 
 // InitCarRouter 汽车相关业务路由组

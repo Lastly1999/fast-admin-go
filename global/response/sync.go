@@ -1,6 +1,7 @@
 package response
 
 import (
+	"errors"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -10,18 +11,13 @@ const (
 	ERROR   = -200
 )
 
-func RequestParamSync(ctx *gin.Context) map[string]interface{} {
+func RequestParamSync(ctx *gin.Context) (map[string]interface{}, error) {
 	param := make(map[string]interface{})
-	err := ctx.BindJSON(&param)
-	if err != nil {
-		ctx.JSON(http.StatusOK, gin.H{
-			"status": false,
-			"code":   ERROR,
-			"msg":    "获取JSON参数失败，Func -> RequestParamSync",
-		})
-		return nil
+	bindErr := ctx.BindJSON(&param)
+	if bindErr != nil {
+		return nil, errors.New("json数据有误，请重试")
 	}
-	return param
+	return param, bindErr
 }
 
 // JsonResultOk 成功统一返回格式

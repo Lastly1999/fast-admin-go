@@ -10,7 +10,10 @@ import (
 // GetCarListById 获取车型列表
 func GetCarListById(ctx *gin.Context) {
 	//	接收参数
-	param := response.RequestParamSync(ctx)
+	param, err := response.RequestParamSync(ctx)
+	if err != nil {
+		fmt.Println("faild")
+	}
 	//	类型id
 	typeId := param["typeId"].(string)
 	//	servcies处理

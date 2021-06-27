@@ -2,12 +2,20 @@ package database
 
 import (
 	"fmt"
-	"go-service/global"
+	v1 "go-service/handler/v1"
+	"go-service/repository"
+	"go-service/services"
 	"go-service/utils"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
+)
+
+var (
+	DB         *gorm.DB
+	UserHandel v1.UserHandel
+	RoleHandel v1.RoleHandel
 )
 
 func InitDataBase() {
@@ -41,5 +49,27 @@ func InitDataBase() {
 	}
 	db.Logger.LogMode(0)
 	//	赋值全局连接池参数
-	global.Db = db
+	DB = db
+}
+
+func InitHandel() {
+	UserHandel = v1.UserHandel{
+		UserSrv: &services.UserService{
+			Repo: &repository.UserRepository{
+				DB: DB,
+			},
+		},
+	}
+	RoleHandel = v1.RoleHandel{
+		RoleSrv: services.RoleService{
+			Repo: repository.RolePository{
+				DB: DB,
+			},
+		},
+	}
+}
+
+func init() {
+	InitDataBase()
+	InitHandel()
 }
