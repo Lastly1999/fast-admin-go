@@ -23,7 +23,7 @@ func (srv *UserHandel) GetUserHandel(ctx *gin.Context) {
 		UserName: param["userName"].(string),
 		UserPass: param["userPass"].(string),
 	}
-	result, srvErr := srv.UserSrv.Get(user)
+	result, roleResult, srvErr := srv.UserSrv.Get(user)
 	//	数据库的未知错误捕获
 	if srvErr != nil {
 		response.JsonResultErr("数据库未知错误，user_handel.go-33行", ctx)
@@ -31,5 +31,6 @@ func (srv *UserHandel) GetUserHandel(ctx *gin.Context) {
 	}
 	response.JsonResultOk(gin.H{
 		"userInfo": result,
+		"roleId":   roleResult.RoleId,
 	}, ctx)
 }

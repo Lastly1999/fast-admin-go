@@ -9,7 +9,7 @@ import (
 )
 
 type RoleHandel struct {
-	RoleSrv services.RoleService
+	RoleSrv services.IRoleService
 }
 
 // GetMenusByUserIdHandel 查询用户权限菜单

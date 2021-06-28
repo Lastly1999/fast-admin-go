@@ -10,7 +10,7 @@ type IRoleService interface {
 }
 
 type RoleService struct {
-	Repo repository.RolePository
+	Repo repository.IRoleRepository
 }
 
 // ListByUserId 用户id查询用户权限菜单

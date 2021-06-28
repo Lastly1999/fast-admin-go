@@ -55,14 +55,17 @@ func InitDataBase() {
 func InitHandel() {
 	UserHandel = v1.UserHandel{
 		UserSrv: &services.UserService{
-			Repo: &repository.UserRepository{
+			UserRepo: &repository.UserRepository{
+				DB: DB,
+			},
+			RoleRepo: &repository.RolePository{
 				DB: DB,
 			},
 		},
 	}
 	RoleHandel = v1.RoleHandel{
-		RoleSrv: services.RoleService{
-			Repo: repository.RolePository{
+		RoleSrv: &services.RoleService{
+			Repo: &repository.RolePository{
 				DB: DB,
 			},
 		},
