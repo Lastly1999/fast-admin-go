@@ -5,6 +5,8 @@ import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"os"
+	"path"
+	"path/filepath"
 )
 
 // GinConf 配置文件结构体
@@ -35,4 +37,16 @@ func ReadYamlConfig() GinConf {
 	//	yaml文件内容映射到结构体中
 	yaml.Unmarshal(config, &ginConf)
 	return ginConf
+}
+
+func GetConfigFileFromExecutable(fileName string) *os.File {
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+		return nil
+	}
+	f, err := os.Open(path.Join(dir, fileName))
+	if err != nil {
+		return nil
+	}
+	return f
 }
