@@ -4,9 +4,9 @@ project:
     filepath: "http://localhost:8080/file/"
 # 数据库配置
 mysql:
-    username: "root"
-    password: "Chen1027"
-    host: "rm-wz94k0l69605b622nwo.mysql.rds.aliyuncs.com"
+    username: ""
+    password: ""
+    host: ""
     port: "3306"
     database: "system_manage"
     charset: "utf8mb4"
